@@ -15,23 +15,16 @@
 
       <a-entity mindar-image-target="targetIndex: 0">
         <a-plane color="white" position="0 0 0" height="2" width="2" rotation="0 0 0">
-          <div style="display: flex;flex-wrap: var(3);">
-            <div>
-              <a-plane color="red" position="0 0 0" height="0.5" width="0.5" rotation="0 0 0"></a-plane>
-              <a-plane color="red" position="0 0 0" height="0.5" width="0.5" rotation="0 0 0"></a-plane>
-              <a-plane color="red" position="0 0 0" height="0.5" width="0.5" rotation="0 0 0"></a-plane>
-            </div>
-            <div>
-              <a-plane color="red" position="0 0 0" height="0.5" width="0.5" rotation="0 0 0"></a-plane>
-              <a-plane color="red" position="0 0 0" height="0.5" width="0.5" rotation="0 0 0"></a-plane>
-              <a-plane color="red" position="0 0 0" height="0.5" width="0.5" rotation="0 0 0"></a-plane>
-            </div>
-            <div>
-              <a-plane color="red" position="0 0 0" height="0.5" width="0.5" rotation="0 0 0"></a-plane>
-              <a-plane color="red" position="0 0 0" height="0.5" width="0.5" rotation="0 0 0"></a-plane>
-              <a-plane color="red" position="0 0 0" height="0.5" width="0.5" rotation="0 0 0"></a-plane>
-            </div>
-          </div>
+          <a-entity layout="type: line; margin: 1; plane: xz; rows: 3">
+            <!-- Entidade 1 -->
+            <a-box width="1" height="1" depth="1" color="red"></a-box>
+      
+            <!-- Entidade 2 -->
+            <a-box width="1" height="1" depth="1" color="green"></a-box>
+      
+            <!-- Entidade 3 -->
+            <a-box width="1" height="1" depth="1" color="blue"></a-box>
+          </a-entity>
         </a-plane>
       </a-entity>
     </a-scene>
