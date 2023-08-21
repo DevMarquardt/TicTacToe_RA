@@ -1,56 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
 <body>
-  <a-scene mindar-image="imageTargetSrc: ./Neymar.mind.txt" vr-mode-ui="enabled: false">
-    <a-camera></a-camera>
-
+  <a-scene mindar-image="imageTargetSrc: ./Neymar.mind.txt">
     <a-entity mindar-image-target="targetIndex: 0">
-      <!-- Tabuleiro -->
-      <a-entity id="board" position="0 0 0">
-        <!-- Usando a classe "clickable" do MindAR para tornar cada célula clicável -->
-        <a-plane class="cell clickable" position="-0.5 0.5 0" width="0.5" height="0.5" color="white" onclick="makeMove(event);"></a-plane>
-        <a-plane class="cell clickable" position="0 0.5 0" width="0.5" height="0.5" color="white" onclick="makeMove(event);"></a-plane>
-        <a-plane class="cell clickable" position="0.5 0.5 0" width="0.5" height="0.5" color="white" onclick="makeMove(event);"></a-plane>
-
-        <a-plane class="cell clickable" position="-0.5 0 0" width="0.5" height="0.5" color="white" onclick="makeMove(event);"></a-plane>
-        <a-plane class="cell clickable" position="0 0 0" width="0.5" height="0.5" color="white" onclick="makeMove(event);"></a-plane>
-        <a-plane class="cell clickable" position="0.5 0 0" width="0.5" height="0.5" color="white" onclick="makeMove(event);"></a-plane>
-
-        <a-plane class="cell clickable" position="-0.5 -0.5 0" width="0.5" height="0.5" color="white" onclick="makeMove(event);"></a-plane>
-        <a-plane class="cell clickable" position="0 -0.5 0" width="0.5" height="0.5" color="white" onclick="makeMove(event);"></a-plane>
-        <a-plane class="cell clickable" position="0.5 -0.5 0" width="0.5" height="0.5" color="white" onclick="makeMove(event);"></a-plane>
-      </a-entity>
+      <!-- Área de pintura -->
+      <a-plane position="0 0 -2" rotation="-90 0 0" width="3" height="3" color="white"></a-plane>
+      
+      <!-- Pincel virtual -->
+      <a-sphere id="brush" radius="0.05" position="0 0.1 -2" color="red"></a-sphere>
     </a-entity>
-
-    <script>
-      let currentPlayer = 'X';
-
-      function makeMove(event) {
-        const cell = event.target;
-
-        // Verifique se a célula já está ocupada
-        if (cell.hasAttribute('text')) return;
-
-        // Defina o texto com base no jogador atual
-        cell.setAttribute('text', 'value', currentPlayer);
-        cell.setAttribute('text', 'color', currentPlayer === 'X' ? 'red' : 'blue');
-        cell.setAttribute('text', 'align', 'center');
-        cell.setAttribute('text', 'width', '8');
-
-        // Troque de jogador
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        
-        // Aqui, você pode adicionar lógica para verificar se alguém ganhou
-      }
-    </script>
   </a-scene>
+  <script src="script.js"></script>
 </body>
 </html>
