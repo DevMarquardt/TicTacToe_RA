@@ -1,70 +1,31 @@
+<!DOCTYPE html>
 <html>
-
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 </head>
-
 <body>
-  <a-scene mindar-image="imageTargetSrc: ./Neymar.mind.txt" color-space="sRGB"
-    renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
-    device-orientation-permission-ui="enabled: false">
-    <a-assets>
-      <a-asset-item id="avatarModel"
-        src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/softmind/scene.gltf">
-      </a-asset-item>
-    </a-assets>
-
-    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
+  <a-scene mindar-image="imageTargetSrc: ./Neymar.mind.txt">
     <a-entity mindar-image-target="targetIndex: 0">
-      <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+      <!-- Esconderijo -->
+      <a-box position="0 0.5 -2" color="purple" depth="0.5" height="1" width="1"></a-box>
 
-      <!-- Bola com o componente drag-touch -->
-      <a-sphere id="ball" radius="0.05" position="0 0.15 0.1" color="red" drag-touch></a-sphere>
+      <!-- Pessoa -->
+      <a-image id="person" src="./person.png" position="0 0.5 -5" width="1" height="1"></a-image>
 
-      <!-- Gol -->
-      <a-box id="goal" position="0 -0.2 0.1" color="green" height="0.1" width="0.5" depth="0.1"></a-box>
+      <!-- Placa de mensagem -->
+      <a-plane id="messagePlane" position="0 2 -5" width="3" height="1" color="white" opacity="0">
+        <a-text value="Você me encontrou!" color="black" align="center" position="0 0 0.01" width="2.5"></a-text>
+      </a-plane>
     </a-entity>
 
-    <script>
-      AFRAME.registerComponent('drag-touch', {
-        init: function () {
-          let el = this.el;
+    <!-- Componente de som -->
+    <a-sound id="victorySound" src="./victory-sound.mp3" autoplay="false"></a-sound>
 
-          el.addEventListener('touchstart', function () {
-            el.isDragging = true;
-          });
-
-          el.addEventListener('touchmove', function (event) {
-            if (!el.isDragging) return;
-
-            let position = el.getAttribute('position');
-            let touch = event.touches[0];
-            let change = { x: touch.clientX * 0.01, y: touch.clientY * 0.01 };
-            el.setAttribute('position', { x: position.x + change.x, y: position.y + change.y, z: position.z });
-          });
-
-          el.addEventListener('touchend', function () {
-            el.isDragging = false;
-
-            let ballPos = el.getAttribute('position');
-            let goal = document.getElementById('goal');
-            let goalPos = goal.getAttribute('position');
-            let goalSize = goal.getAttribute('geometry');
-
-            if (ballPos.x > goalPos.x - goalSize.width / 2 &&
-              ballPos.x < goalPos.x + goalSize.width / 2 &&
-              ballPos.y > goalPos.y - goalSize.height / 2 &&
-              ballPos.y < goalPos.y + goalSize.height / 2) {
-              alert('GOOOOL');
-            }
-          });
-        }
-      });
-    </script>
+    <a-camera>
+      <a-cursor></a-cursor>
+    </a-camera>
   </a-scene>
 </body>
-
 </html>
