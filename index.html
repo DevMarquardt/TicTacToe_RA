@@ -14,16 +14,18 @@
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane color="white" position="0 0 0" height="2" width="2" rotation="0 0 0">
-          <a-entity layout="type: line; margin: 1; plane: xz; rows: 3">
-            <!-- Entidade 1 -->
-            <a-box width="1" height="1" depth="1" color="red"></a-box>
-      
-            <!-- Entidade 2 -->
-            <a-box width="1" height="1" depth="1" color="green"></a-box>
-      
-            <!-- Entidade 3 -->
-            <a-box width="1" height="1" depth="1" color="blue"></a-box>
+        <a-plane color="red" position="0 0 0" height="2" width="2" rotation="0 0 0">
+          <a-entity layout="type: grid; margin: 0.1; plane: xz; rows: 3; cols: 3">
+            <!-- Células do jogo da velha -->
+            <a-box layout="border: 2px solid black" class="cell" width="0.8" height="0.05" depth="0.8" color="white"></a-box>
+            <a-box layout="border: 2px solid black" class="cell" width="0.8" height="0.05" depth="0.8" color="white"></a-box>
+            <a-box layout="border: 2px solid black" class="cell" width="0.8" height="0.05" depth="0.8" color="white"></a-box>
+            <a-box layout="border: 2px solid black" class="cell" width="0.8" height="0.05" depth="0.8" color="white"></a-box>
+            <a-box layout="border: 2px solid black" class="cell" width="0.8" height="0.05" depth="0.8" color="white"></a-box>
+            <a-box layout="border: 2px solid black" class="cell" width="0.8" height="0.05" depth="0.8" color="white"></a-box>
+            <a-box layout="border: 2px solid black" class="cell" width="0.8" height="0.05" depth="0.8" color="white"></a-box>
+            <a-box layout="border: 2px solid black" class="cell" width="0.8" height="0.05" depth="0.8" color="white"></a-box>
+            <a-box layout="border: 2px solid black" class="cell" width="0.8" height="0.05" depth="0.8" color="white"></a-box>
           </a-entity>
         </a-plane>
       </a-entity>
