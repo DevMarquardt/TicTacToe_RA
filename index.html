@@ -1,31 +1,71 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 </head>
+
 <body>
-  <a-scene mindar-image="imageTargetSrc: ./Neymar.mind.txt">
+  <a-scene mindar-image="imageTargetSrc: ./Neymar.mind.txt " color-space="sRGB"
+    renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false">
+    <a-assets>
+      <a-asset-item id="avatarModel"
+        src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/softmind/scene.gltf">
+      </a-asset-item>
+    </a-assets>
+
+    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
     <a-entity mindar-image-target="targetIndex: 0">
-      <!-- Esconderijo -->
-      <a-box position="0 0.5 -2" color="purple" depth="0.5" height="1" width="1"></a-box>
+      <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
 
-      <!-- Pessoa -->
-      <a-image id="person" src="./person.png" position="0 0.5 -5" width="1" height="1"></a-image>
+      <!-- Bola com o componente drag-drop -->
+      <a-sphere id="ball" radius="0.05" position="0 0.15 0.1" color="red" drag-drop></a-sphere>
 
-      <!-- Placa de mensagem -->
-      <a-plane id="messagePlane" position="0 2 -5" width="3" height="1" color="white" opacity="0">
-        <a-text value="Você me encontrou!" color="black" align="center" position="0 0 0.01" width="2.5"></a-text>
-      </a-plane>
+      <!-- Gol -->
+      <a-box id="goal" position="0 -0.2 0.1" color="green" height="0.1" width="0.5" depth="0.1"></a-box>
     </a-entity>
 
-    <!-- Componente de som -->
-    <a-sound id="victorySound" src="./success-1-6297.mp3" autoplay="false"></a-sound>
+    <script>
+      AFRAME.registerComponent('drag-drop', {
+        schema: {
+          target: { default: '#goal' }
+        },
+        init: function () {
+          this.onTouchStart = this.onTouchStart.bind(this);
+          this.onTouchEnd = this.onTouchEnd.bind(this);
+        },
+        play: function () {
+          this.el.addEventListener('touchstart', this.onTouchStart);
+          this.el.addEventListener('touchend', this.onTouchEnd);
+        },
+        pause: function () {
+          this.el.removeEventListener('touchstart', this.onTouchStart);
+          this.el.removeEventListener('touchend', this.onTouchEnd);
+        },
+        onTouchStart: function (event) {
+          this.isDragging = true;
+          this.initialPosition = this.el.getAttribute('position');
+        },
+        onTouchEnd: function (event) {
+          this.isDragging = false;
+          let ballPosition = this.el.object3D.getWorldPosition();
+          let target = document.querySelector(this.data.target);
+          let targetPosition = target.object3D.getWorldPosition();
+          let distance = ballPosition.distanceTo(targetPosition);
 
-    <a-camera>
-      <a-cursor></a-cursor>
-    </a-camera>
+          if (distance < 0.1) { // You might want to adjust this value depending on the scale of your scene
+            alert('GOOOOL');
+          } else {
+            // Reset position if not a goal
+            this.el.setAttribute('position', this.initialPosition);
+          }
+        }
+      });
+    </script>
   </a-scene>
 </body>
+
 </html>
