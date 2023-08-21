@@ -1,54 +1,67 @@
 <html>
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
-    </head>
-    <body>
-      <a-scene mindar-image="imageTargetSrc: ./Neymar.mind.txt" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-        <a-assets>
-          <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
-        </a-assets>
-  
-        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-  
-        <a-entity mindar-image-target="targetIndex: 0">
-          <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
 
-          <!-- Bola (pode ser substituída por um modelo 3D) -->
-          <a-sphere id="ball" radius="0.05" position="0 0 0.1" color="red"></a-sphere>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+</head>
 
-          <!-- Gol (representado por um plano, mas pode ser um modelo 3D mais detalhado) -->
-          <a-plane id="goal" position="0 -0.2 0.1" color="green" height="0.1" width="0.5"></a-plane>
-        </a-entity>
-        
-        <script>
-          let ball = document.getElementById("ball");
-          let goal = document.getElementById("goal");
+<body>
+  <a-scene mindar-image="imageTargetSrc: ./Neymar.mind.txt" color-space="sRGB"
+    renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false">
+    <a-assets>
+      <a-asset-item id="avatarModel"
+        src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/softmind/scene.gltf">
+      </a-asset-item>
+    </a-assets>
 
-          ball.addEventListener('mousedown', function() {
-            let dragging = true;
+    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-            // Atualiza posição da bola conforme o movimento do mouse.
-            ball.addEventListener('mousemove', function(event) {
-              if (dragging) {
-                let position = ball.getAttribute('position');
-                ball.setAttribute('position', { x: event.detail.intersection.point.x, y: position.y, z: event.detail.intersection.point.z });
-              }
-            });
+    <a-entity mindar-image-target="targetIndex: 0">
+      <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
 
-            ball.addEventListener('mouseup', function() {
-              dragging = false;
+      <!-- Bola -->
+      <a-sphere id="ball" radius="0.05" position="0 0.15 0.1" color="red"></a-sphere>
 
-              // Verifica se a bola colide com o gol.
-              let ballPos = ball.getAttribute('position');
-              let goalPos = goal.getAttribute('position');
-              if (ballPos.x > goalPos.x - 0.25 && ballPos.x < goalPos.x + 0.25 && ballPos.y > goalPos.y - 0.05 && ballPos.y < goalPos.y + 0.05) {
-                alert('Goool!');
-              }
-            });
-          });
-        </script>
-      </a-scene>
-    </body>
+      <!-- Gol -->
+      <a-box id="goal" position="0 -0.2 0.1" color="green" height="0.1" width="0.5" depth="0.1"></a-box>
+    </a-entity>
+
+    <script>
+      let ball = document.getElementById('ball');
+      let goal = document.getElementById('goal');
+      let isDragging = false;
+
+      ball.addEventListener('mousedown', function () {
+        isDragging = true;
+      });
+
+      ball.addEventListener('mouseup', function () {
+        isDragging = false;
+
+        // Check for collision
+        let ballPos = ball.getAttribute('position');
+        let goalPos = goal.getAttribute('position');
+        let goalSize = goal.getAttribute('geometry');
+
+        if (ballPos.x > goalPos.x - goalSize.width / 2 &&
+          ballPos.x < goalPos.x + goalSize.width / 2 &&
+          ballPos.y > goalPos.y - goalSize.height / 2 &&
+          ballPos.y < goalPos.y + goalSize.height / 2) {
+          alert('GOOOOL');
+        }
+      });
+
+      document.addEventListener('mousemove', function (event) {
+        if (isDragging) {
+          // Here we move the ball with the mouse. It's a simple logic and may need adjustments.
+          let position = ball.getAttribute('position');
+          ball.setAttribute('position', { x: position.x + event.movementX * 0.01, y: position.y + event.movementY * 0.01, z: position.z });
+        }
+      });
+    </script>
+  </a-scene>
+</body>
+
 </html>
