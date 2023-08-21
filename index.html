@@ -9,15 +9,10 @@
       <a-assets>
 	<img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/card.png" />
 	<a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
-      </a-assets>
-
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-      <a-plane src="#card" height="2" width="2" rotation="0 0 0 0" position="0 0 1">
-        <a-plane style="background-color: blue; height: 20px; width: 20px;">
-
-        </a-plane>
-      </a-plane>
+    </a-assets>
+      <a-entity mindar-image-controller="targetIndex: 0">
+          <a-entity mindar-image-target="index: 0; name: Neymar;" position="0 0 0" color="blue" width="2" height="2"></a-entity>
+      </a-entity>
     </a-scene>
   </body>
 </html>
