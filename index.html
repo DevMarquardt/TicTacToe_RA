@@ -14,26 +14,39 @@
 
     <a-entity mindar-image-target="targetIndex: 0">
       <!-- Quadrado a ser pintado -->
-      <a-plane id="paintSquare" class="clickable" position="0 0.5 0" width="1" height="1" color="white" onclick="applyColor(event);" gesture-detector="enabled: false"></a-plane>
+      <a-plane id="paintSquare" class="clickable" position="0 0.5 0" width="1" height="1" color="white" gesture-detector="enabled: false"></a-plane>
       
       <!-- Paleta de cores -->
-      <a-circle id="redColor" class="clickable" position="-0.5 -0.5 0" radius="0.2" color="red" onclick="selectColor('red');"></a-circle>
-      <a-circle id="blueColor" class="clickable" position="0 -0.5 0" radius="0.2" color="blue" onclick="selectColor('blue');"></a-circle>
-      <a-circle id="greenColor" class="clickable" position="0.5 -0.5 0" radius="0.2" color="green" onclick="selectColor('green');"></a-circle>
+      <a-circle id="redColor" class="clickable" position="-0.5 -0.5 0" radius="0.2" color="red"></a-circle>
+      <a-circle id="blueColor" class="clickable" position="0 -0.5 0" radius="0.2" color="blue"></a-circle>
+      <a-circle id="greenColor" class="clickable" position="0.5 -0.5 0" radius="0.2" color="green"></a-circle>
     </a-entity>
 
     <script>
       let selectedColor = 'white';
+      
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.clickable').forEach(element => {
+          element.addEventListener('click', function () {
+            selectColor(element.getAttribute('color'));
+          });
+        });
+        
+        const paintSquare = document.getElementById('paintSquare');
+        paintSquare.addEventListener('click', function (event) {
+          applyColor(event);
+        });
+      });
 
       function selectColor(color) {
         selectedColor = color;
       }
 
       function applyColor(event) {
-  if (event.detail.intersectedEl.id === 'paintSquare') {
-    event.detail.intersectedEl.setAttribute('color', selectedColor);
-  }
-}
+        if (event.detail.intersectedEl.id === 'paintSquare') {
+          event.detail.intersectedEl.setAttribute('color', selectedColor);
+        }
+      }
     </script>
   </a-scene>
 </body>
