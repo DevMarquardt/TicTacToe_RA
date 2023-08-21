@@ -1,71 +1,61 @@
 <html>
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 </head>
-
 <body>
-  <a-scene mindar-image="imageTargetSrc: ./Neymar.mind.txt " color-space="sRGB"
-    renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
-    device-orientation-permission-ui="enabled: false">
-    <a-assets>
-      <a-asset-item id="avatarModel"
-        src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/softmind/scene.gltf">
-      </a-asset-item>
-    </a-assets>
+<a-scene mindar-image="imageTargetSrc: ./Neymar.mind.txt" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+  <a-assets>
+    <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+  </a-assets>
 
-    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+  <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-    <a-entity mindar-image-target="targetIndex: 0">
-      <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+  <a-entity mindar-image-target="targetIndex: 0">
+    <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
 
-      <!-- Bola com o componente drag-drop -->
-      <a-sphere id="ball" radius="0.05" position="0 0.15 0.1" color="red" drag-drop></a-sphere>
+    <!-- Bola -->
+    <a-sphere id="ball" radius="0.05" position="0 0.15 0.1" color="red"></a-sphere>
 
-      <!-- Gol -->
-      <a-box id="goal" position="0 -0.2 0.1" color="green" height="0.1" width="0.5" depth="0.1"></a-box>
-    </a-entity>
+    <!-- Gol -->
+    <a-box id="goal" position="0 -0.2 0.1" color="green" height="0.1" width="0.5" depth="0.1"></a-box>
+  </a-entity>
 
-    <script>
-      AFRAME.registerComponent('drag-drop', {
-        schema: {
-          target: { default: '#goal' }
-        },
-        init: function () {
-          this.onTouchStart = this.onTouchStart.bind(this);
-          this.onTouchEnd = this.onTouchEnd.bind(this);
-        },
-        play: function () {
-          this.el.addEventListener('touchstart', this.onTouchStart);
-          this.el.addEventListener('touchend', this.onTouchEnd);
-        },
-        pause: function () {
-          this.el.removeEventListener('touchstart', this.onTouchStart);
-          this.el.removeEventListener('touchend', this.onTouchEnd);
-        },
-        onTouchStart: function (event) {
-          this.isDragging = true;
-          this.initialPosition = this.el.getAttribute('position');
-        },
-        onTouchEnd: function (event) {
-          this.isDragging = false;
-          let ballPosition = this.el.object3D.getWorldPosition();
-          let target = document.querySelector(this.data.target);
-          let targetPosition = target.object3D.getWorldPosition();
-          let distance = ballPosition.distanceTo(targetPosition);
+  <script>
+    let ball = document.getElementById('ball');
+    let startTouch = null;
+    ball.addEventListener('touchstart', (event) => {
+      startTouch = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    });
 
-          if (distance < 0.1) { // You might want to adjust this value depending on the scale of your scene
-            alert('GOOOOL');
-          } else {
-            // Reset position if not a goal
-            this.el.setAttribute('position', this.initialPosition);
-          }
+    ball.addEventListener('touchend', (event) => {
+      if (startTouch) {
+        let endTouch = { x: event.changedTouches[0].clientX, y: event.changedTouches[0].clientY };
+        let dx = endTouch.x - startTouch.x;
+        let dy = endTouch.y - startTouch.y;
+
+        // Convert the touch movement to world coordinates. The multiplier '0.01' is arbitrary and may need to be adjusted.
+        let newPosition = { 
+          x: ball.getAttribute('position').x + dx * 0.01, 
+          y: ball.getAttribute('position').y + dy * 0.01, 
+          z: ball.getAttribute('position').z 
+        };
+        ball.setAttribute('position', newPosition);
+
+        // Check for goal
+        let goal = document.getElementById('goal');
+        let goalBox = goal.object3D.geometry.boundingBox;
+        let ballPos = ball.object3D.position;
+        if (ballPos.x >= goalBox.min.x && ballPos.x <= goalBox.max.x &&
+          ballPos.y >= goalBox.min.y && ballPos.y <= goalBox.max.y) {
+          alert('GOOOOL');
         }
-      });
-    </script>
-  </a-scene>
-</body>
 
+        startTouch = null;
+      }
+    });
+  </script>
+</a-scene>
+</body>
 </html>
