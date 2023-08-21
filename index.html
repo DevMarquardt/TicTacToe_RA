@@ -21,49 +21,46 @@
     <a-entity mindar-image-target="targetIndex: 0">
       <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
 
-      <!-- Bola -->
-      <a-sphere id="ball" radius="0.05" position="0 0.15 0.1" color="red"></a-sphere>
+      <!-- Bola com o componente drag-touch -->
+      <a-sphere id="ball" radius="0.05" position="0 0.15 0.1" color="red" drag-touch></a-sphere>
 
       <!-- Gol -->
       <a-box id="goal" position="0 -0.2 0.1" color="green" height="0.1" width="0.5" depth="0.1"></a-box>
     </a-entity>
 
     <script>
-      let ball = document.getElementById('ball');
-      let goal = document.getElementById('goal');
-      let isDragging = false;
-      let lastTouch = {};
+      AFRAME.registerComponent('drag-touch', {
+        init: function () {
+          let el = this.el;
 
-      ball.addEventListener('touchstart', function (event) {
-        isDragging = true;
-        lastTouch = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-      });
+          el.addEventListener('touchstart', function () {
+            el.isDragging = true;
+          });
 
-      document.addEventListener('touchmove', function (event) {
-        if (isDragging) {
-          let deltaX = event.touches[0].clientX - lastTouch.x;
-          let deltaY = event.touches[0].clientY - lastTouch.y;
+          el.addEventListener('touchmove', function (event) {
+            if (!el.isDragging) return;
 
-          let position = ball.getAttribute('position');
-          ball.setAttribute('position', { x: position.x + deltaX * 0.01, y: position.y + deltaY * 0.01, z: position.z });
+            let position = el.getAttribute('position');
+            let touch = event.touches[0];
+            let change = { x: touch.clientX * 0.01, y: touch.clientY * 0.01 };
+            el.setAttribute('position', { x: position.x + change.x, y: position.y + change.y, z: position.z });
+          });
 
-          lastTouch = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-        }
-      });
+          el.addEventListener('touchend', function () {
+            el.isDragging = false;
 
-      document.addEventListener('touchend', function () {
-        isDragging = false;
+            let ballPos = el.getAttribute('position');
+            let goal = document.getElementById('goal');
+            let goalPos = goal.getAttribute('position');
+            let goalSize = goal.getAttribute('geometry');
 
-        // Check for collision
-        let ballPos = ball.getAttribute('position');
-        let goalPos = goal.getAttribute('position');
-        let goalSize = goal.getAttribute('geometry');
-
-        if (ballPos.x > goalPos.x - goalSize.width / 2 &&
-          ballPos.x < goalPos.x + goalSize.width / 2 &&
-          ballPos.y > goalPos.y - goalSize.height / 2 &&
-          ballPos.y < goalPos.y + goalSize.height / 2) {
-          alert('GOOOOL');
+            if (ballPos.x > goalPos.x - goalSize.width / 2 &&
+              ballPos.x < goalPos.x + goalSize.width / 2 &&
+              ballPos.y > goalPos.y - goalSize.height / 2 &&
+              ballPos.y < goalPos.y + goalSize.height / 2) {
+              alert('GOOOOL');
+            }
+          });
         }
       });
     </script>
