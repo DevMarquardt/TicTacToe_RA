@@ -32,12 +32,26 @@
       let ball = document.getElementById('ball');
       let goal = document.getElementById('goal');
       let isDragging = false;
+      let lastTouch = {};
 
-      ball.addEventListener('mousedown', function () {
+      ball.addEventListener('touchstart', function (event) {
         isDragging = true;
+        lastTouch = { x: event.touches[0].clientX, y: event.touches[0].clientY };
       });
 
-      ball.addEventListener('mouseup', function () {
+      document.addEventListener('touchmove', function (event) {
+        if (isDragging) {
+          let deltaX = event.touches[0].clientX - lastTouch.x;
+          let deltaY = event.touches[0].clientY - lastTouch.y;
+
+          let position = ball.getAttribute('position');
+          ball.setAttribute('position', { x: position.x + deltaX * 0.01, y: position.y + deltaY * 0.01, z: position.z });
+
+          lastTouch = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+        }
+      });
+
+      ball.addEventListener('touchend', function () {
         isDragging = false;
 
         // Check for collision
@@ -50,14 +64,6 @@
           ballPos.y > goalPos.y - goalSize.height / 2 &&
           ballPos.y < goalPos.y + goalSize.height / 2) {
           alert('GOOOOL');
-        }
-      });
-
-      document.addEventListener('mousemove', function (event) {
-        if (isDragging) {
-          // Here we move the ball with the mouse. It's a simple logic and may need adjustments.
-          let position = ball.getAttribute('position');
-          ball.setAttribute('position', { x: position.x + event.movementX * 0.01, y: position.y + event.movementY * 0.01, z: position.z });
         }
       });
     </script>
