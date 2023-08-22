@@ -26,6 +26,7 @@ function verificaPecaTem(event){
 }
 
 function verificaVitoria(){
+    alert(elements[0].innerHTML)
     if(elements[0].innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'
      && elements[1].innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'
       && elements[2].innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'){
