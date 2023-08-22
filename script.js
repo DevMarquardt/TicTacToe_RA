@@ -6,9 +6,9 @@ for(let element of elements){
     element.addEventListener("click", event => {
         count ++ ;
         if(count % 2 == 0){
-            event.target.innerHTML += '<a-box color="blue"  width="0.09" height="0.2" position="0 0 0.2" radius="20"></a-box>';
+            event.target.innerHTML += '<a-box color="blue"  width="0.09" height="0.2" position="0 0 0.08" radius="20"></a-box>';
         } else{
-            event.target.innerHTML += '<a-circle color="green" radius="0.1" position="0 0 0.5"></a-circle>';
+            event.target.innerHTML += '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>';
         }
     })
 }
