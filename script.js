@@ -8,7 +8,7 @@ for(let element of elements){
         if(count % 2 == 0){
             event.target.innerHTML += '<a-box color="blue"  width="0.09" height="0.2" position="0 0 0.2" radius="20"></a-box>';
         } else{
-            event.target.innerHTML += '<a-circle color="green" radius="1" position="0 0 0.2"></a-circle>';
+            event.target.innerHTML += '<a-circle color="green" radius="1" position="0 0 5"></a-circle>';
         }
     })
 }
