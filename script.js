@@ -12,6 +12,7 @@ for(let element of elements){
             } else{
                 event.target.innerHTML += '<a-box color="blue"  width="0.09" height="0.2" position="0 0 0.08" radius="20"></a-box>';
             }
+            verificaVitoria()
         }
     })
 }
@@ -24,4 +25,26 @@ function verificaPecaTem(event){
     }
 }
 
+function verificaVitoria(){
+    let mapa = elements
+    for(var element of mapa){
+        if(element.innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'){
+            element = 1
+        }else if(element.innerHTML == '<a-box color="blue"  width="0.09" height="0.2" position="0 0 0.08" radius="20"></a-box>'){
+            element = 2
+        }else{
+            element = 0
+        }
+    }
+
+    verificaVitoriaPT2(mapa)
+    
+}
+
+
+function verificaVitoriaPT2(mapa){
+    if(mapa[0] == 1 && mapa[1] == 1 && mapa[2] == 1){
+        alert('vitoria')
+    }
+}
 
