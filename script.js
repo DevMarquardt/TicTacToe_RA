@@ -2,7 +2,7 @@ let elements = document.getElementsByClassName("quadrado");
 
 let count = 0;
 
-for(let element of elements){
+elements.forEach(element => {
     element.addEventListener("click", event => {
         let temPeca = verificaPecaTem(event.target.innerHTML);
         if(temPeca){
@@ -11,12 +11,13 @@ for(let element of elements){
             } else{
                 event.target.innerHTML += '<a-box color="blue"  width="0.09" height="0.2" position="0 0 0.08" radius="20"></a-box>';
             }
-            element.innerHTML += event.target.innerHTML 
+            element.innerHTML = event.target.innerHTML 
             count ++ ;
             verificaVitoria()
         }
-    })
-}
+    }) 
+});
+    
 
 function verificaPecaTem(event){
     if(event != ""){
@@ -26,10 +27,12 @@ function verificaPecaTem(event){
     }
 }
 
+
+if(elements[0].innerHTML === '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'){
+    alert('ooooooooooo')
+}
+
 function verificaVitoria(){
-    if(elements[0].innerHTML === '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'){
-        alert('ooooooooooo')
-    }
     if(elements[0].innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'
      && elements[1].innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'
       && elements[2].innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'){
