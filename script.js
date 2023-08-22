@@ -6,7 +6,7 @@ for(let element of elements){
     element.addEventListener("click", event => {
         count ++ ;
         let temPeca = verificaPecaTem(event.target.innerHTML);
-        if(!temPeca){
+        if(temPeca){
             if(count % 2 == 0){
                 event.target.innerHTML += '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>';
             } else{
