@@ -9,7 +9,8 @@ for(let element of elements){
             if(count % 2 == 0){
                 event.target.innerHTML += '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>';
             } else{
-                event.target.innerHTML += '<a-box color="blue"  width="0.09" height="0.2" position="0 0 0.08" radius="20"></a-box>';
+                event.target.innerHTML += '<a-box color="blue" rotation="-45 0 0"  width="0.09" height="0.2" position="0 0 0.08" radius="20"></a-box>';
+                event.target.innerHTML += '<a-box color="blue" rotation="45 0 0"  width="0.09" height="0.2" position="0 0 0.08" radius="20"></a-box>';
             }
             count ++ ;
             verificaVitoria()
@@ -232,7 +233,6 @@ function verificaVitoria(){
             }, 1000);
 
     }
-
 
 
     if(countJogadas == 9){
