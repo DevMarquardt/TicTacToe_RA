@@ -51,8 +51,10 @@ function verificaVitoria(){
         &&  elements[4].innerHTML.includes('green')
         &&  elements[8].innerHTML.includes('green')){
 
-        alert('vitoria')
-        windows.location.reload()
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
 
     }
 
