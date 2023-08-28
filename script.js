@@ -28,7 +28,7 @@ function verificaPecaTem(element){
 function verificaVitoria(){
 
     let naoEmpate = false
-    alert(elements[0].innerHTML.innerHTML)
+    alert(elements[0].innerHTML)
     if(elements[0].innerHTML === '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'){
         alert('ooooooooooo')
     }
@@ -110,7 +110,7 @@ function verificaVitoria(){
     }
 
     elements.forEach(element => {
-        if(element.innerHTML === null){
+        if(element.innerHTML === ""){
             naoEmpate = true
         }
     });
