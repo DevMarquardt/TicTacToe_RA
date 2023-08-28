@@ -235,7 +235,7 @@ function verificaVitoria(){
 
 
     elements.forEach(element => {
-        if(element.innerHTML === ""){
+        if(element.innerHTML.includes('')){
             naoEmpate = true
         }
     });
