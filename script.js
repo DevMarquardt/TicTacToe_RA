@@ -26,8 +26,8 @@ function verificaPecaTem(element){
 }
 let countJogadas = 0
 function verificaVitoria(){
+
     countJogadas++;
-    let naoEmpate = false
     
 
     if( elements[0].innerHTML.includes('green')
@@ -235,15 +235,11 @@ function verificaVitoria(){
 
 
 
-    elements.forEach(element => {
-        alert(element.innerHTML)
-        if(element.innerHTML.includes('') && countJogadas < 9){
-            naoEmpate = true
-        }
-    });
-    if(!naoEmpate){
+    if(countJogadas == 9){
         alert('Empate')
-        windows.location.reload()
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
     }
 }
 
