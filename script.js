@@ -41,9 +41,9 @@ function verificaVitoria(){
       && elements[2].innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'){
         alert('vitoria')
     }
-    else if(elements[0].innerHTML.includes('green') 
-        && elements[3].innerHTML.includes('green')
-        && elements[6].innerHTML.includes('green')){
+    else if(`${elements[0].innerHTML.includes('green')}` 
+        && `${elements[3].innerHTML.includes('green')}`
+        && `${elements[6].innerHTML.includes('green')}`){
 
         alert('vitoria')
     }
