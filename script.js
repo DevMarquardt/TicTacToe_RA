@@ -11,8 +11,8 @@ for(let element of elements){
             } else{
                 event.target.innerHTML += '<a-box color="blue"  width="0.09" height="0.2" position="0 0 0.08" radius="20"></a-box>';
             }
-            elements[2].innerHTML += event.target.innerHTML;
-            alert(elements[2].innerHTML)
+            elements[count].innerHTML += event.target.innerHTML;
+            alert(elements[count].innerHTML)
             verificaVitoria()
         }
         count ++ ;
