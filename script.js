@@ -11,16 +11,14 @@ for(let element of elements){
             } else{
                 event.target.innerHTML += '<a-box color="blue"  width="0.09" height="0.2" position="0 0 0.08" radius="20"></a-box>';
             }
-            elements[elements.indexOf(element)].innerHTML += event.target.innerHTML;
-            alert(elements[count].innerHTML)
             count ++ ;
             verificaVitoria()
         }
     })
 }
 
-function verificaPecaTem(event){
-    if(event != ""){
+function verificaPecaTem(element){
+    if(element.innerHTML != ""){
         return false;
     } else{
         return true;
