@@ -3,7 +3,7 @@ let elements = document.getElementsByClassName("quadrado");
 let count = 0;
 
 for(let element of elements){
-    element.addEventListener("click", event => {
+    element.addEventListener("click",index,  event => {
         let temPeca = verificaPecaTem(event.target.innerHTML);
         if(temPeca){
             count ++ ;
@@ -12,9 +12,10 @@ for(let element of elements){
             } else{
                 event.target.innerHTML += '<a-box color="blue"  width="0.09" height="0.2" position="0 0 0.08" radius="20"></a-box>';
             }
-            element = event.target.innerHTML;
+            elements[index] = event.target.innerHTML;
             verificaVitoria()
         }
+        index++;
     })
 }
 
