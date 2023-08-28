@@ -33,9 +33,9 @@ function verificaVitoria(){
         3 - ${elements[3].innerHTML.includes('green')}
         6 - ${elements[6].innerHTML.includes('green')}
     `)
-    if(`${elements[0].innerHTML.includes('green')}`  
-        && `${elements[3].innerHTML.includes('green')}`
-        && `${elements[6].innerHTML.includes('green')}`){
+    if( elements[0].innerHTML.includes('green')
+        &&  elements[3].innerHTML.includes('green')
+        &&  elements[6].innerHTML.includes('green')){
 
         alert('vitoria')
     }
