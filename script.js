@@ -87,6 +87,67 @@ function verificaVitoria(){
 
 
 
+
+
+
+    if( elements[0].innerHTML.includes('blue')
+        &&  elements[3].innerHTML.includes('blue')
+        &&  elements[6].innerHTML.includes('blue')){
+
+        alert('vitoria')
+    }
+
+    if( elements[0].innerHTML.includes('blue')
+        &&  elements[1].innerHTML.includes('blue')
+        &&  elements[2].innerHTML.includes('blue')){
+
+        alert('vitoria')
+    }
+
+    if( elements[0].innerHTML.includes('blue')
+        &&  elements[4].innerHTML.includes('blue')
+        &&  elements[8].innerHTML.includes('blue')){
+
+        alert('vitoria')
+    }
+
+    if( elements[2].innerHTML.includes('blue')
+        &&  elements[5].innerHTML.includes('blue')
+        &&  elements[8].innerHTML.includes('blue')){
+
+        alert('vitoria')
+    }
+
+    if( elements[2].innerHTML.includes('blue')
+        &&  elements[4].innerHTML.includes('blue')
+        &&  elements[6].innerHTML.includes('blue')){
+
+        alert('vitoria')
+    }
+
+    if( elements[3].innerHTML.includes('blue')
+        &&  elements[4].innerHTML.includes('blue')
+        &&  elements[5].innerHTML.includes('blue')){
+
+        alert('vitoria')
+    }
+
+    if( elements[6].innerHTML.includes('blue')
+        &&  elements[7].innerHTML.includes('blue')
+        &&  elements[8].innerHTML.includes('blue')){
+
+        alert('vitoria')
+    }
+
+    if( elements[1].innerHTML.includes('blue')
+        &&  elements[4].innerHTML.includes('blue')
+        &&  elements[7].innerHTML.includes('blue')){
+
+        alert('vitoria')
+    }
+
+
+
     elements.forEach(element => {
         if(element.innerHTML === ""){
             naoEmpate = true
