@@ -29,9 +29,9 @@ function verificaVitoria(){
 
     let naoEmpate = false
     alert(`
-        0 - ${elements[0].innerHTML}
-        3 - ${elements[3].innerHTML}
-        6 - ${elements[6].innerHTML}
+        0 - ${elements[0].innerHTML.includes('green')}
+        3 - ${elements[3].innerHTML.includes('green')}
+        6 - ${elements[6].innerHTML.includes('green')}
     `)
     if(elements[0].innerHTML.includes('green')){
         alert('ooooooooooo')
