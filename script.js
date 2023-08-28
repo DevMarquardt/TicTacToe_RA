@@ -34,6 +34,8 @@ function verificaVitoria(){
         &&  elements[6].innerHTML.includes('green')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
     if( elements[0].innerHTML.includes('green')
@@ -41,6 +43,8 @@ function verificaVitoria(){
         &&  elements[2].innerHTML.includes('green')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
     if( elements[0].innerHTML.includes('green')
@@ -48,6 +52,8 @@ function verificaVitoria(){
         &&  elements[8].innerHTML.includes('green')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
     if( elements[2].innerHTML.includes('green')
@@ -55,6 +61,8 @@ function verificaVitoria(){
         &&  elements[8].innerHTML.includes('green')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
     if( elements[2].innerHTML.includes('green')
@@ -62,6 +70,8 @@ function verificaVitoria(){
         &&  elements[6].innerHTML.includes('green')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
     if( elements[3].innerHTML.includes('green')
@@ -69,6 +79,8 @@ function verificaVitoria(){
         &&  elements[5].innerHTML.includes('green')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
     if( elements[6].innerHTML.includes('green')
@@ -76,6 +88,8 @@ function verificaVitoria(){
         &&  elements[8].innerHTML.includes('green')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
     if( elements[1].innerHTML.includes('green')
@@ -83,6 +97,8 @@ function verificaVitoria(){
         &&  elements[7].innerHTML.includes('green')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
 
@@ -95,6 +111,9 @@ function verificaVitoria(){
         &&  elements[6].innerHTML.includes('blue')){
 
         alert('vitoria')
+        windows.location.reload()
+
+        windows.location.reload()
     }
 
     if( elements[0].innerHTML.includes('blue')
@@ -102,6 +121,10 @@ function verificaVitoria(){
         &&  elements[2].innerHTML.includes('blue')){
 
         alert('vitoria')
+        windows.location.reload()
+
+        windows.location.reload()
+
     }
 
     if( elements[0].innerHTML.includes('blue')
@@ -109,6 +132,8 @@ function verificaVitoria(){
         &&  elements[8].innerHTML.includes('blue')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
     if( elements[2].innerHTML.includes('blue')
@@ -116,6 +141,8 @@ function verificaVitoria(){
         &&  elements[8].innerHTML.includes('blue')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
     if( elements[2].innerHTML.includes('blue')
@@ -123,6 +150,8 @@ function verificaVitoria(){
         &&  elements[6].innerHTML.includes('blue')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
     if( elements[3].innerHTML.includes('blue')
@@ -130,6 +159,8 @@ function verificaVitoria(){
         &&  elements[5].innerHTML.includes('blue')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
     if( elements[6].innerHTML.includes('blue')
@@ -137,6 +168,8 @@ function verificaVitoria(){
         &&  elements[8].innerHTML.includes('blue')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
     if( elements[1].innerHTML.includes('blue')
@@ -144,6 +177,8 @@ function verificaVitoria(){
         &&  elements[7].innerHTML.includes('blue')){
 
         alert('vitoria')
+        windows.location.reload()
+
     }
 
 
