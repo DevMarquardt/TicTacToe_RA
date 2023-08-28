@@ -236,7 +236,8 @@ function verificaVitoria(){
 
 
     elements.forEach(element => {
-        if(element.innerHTML.includes('') || element.innerHTML.includes(undefined) && countJogadas < 9){
+        alert(element.innerHTML)
+        if(element.innerHTML.includes('') && countJogadas < 9){
             naoEmpate = true
         }
     });
