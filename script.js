@@ -24,10 +24,11 @@ function verificaPecaTem(element){
         return true;
     }
 }
-
+let countJogadas = 0
 function verificaVitoria(){
-
+    countJogadas++;
     let naoEmpate = false
+    
 
     if( elements[0].innerHTML.includes('green')
         &&  elements[3].innerHTML.includes('green')
@@ -235,11 +236,11 @@ function verificaVitoria(){
 
 
     elements.forEach(element => {
-        if(element.innerHTML.includes('')){
+        if(element.innerHTML.includes('') || element.innerHTML.includes(undefined) && countJogadas < 9){
             naoEmpate = true
         }
     });
-    if(naoEmpate === false){
+    if(!naoEmpate){
         alert('Empate')
         windows.location.reload()
     }
