@@ -33,7 +33,7 @@ function verificaVitoria(){
         3 - ${elements[3].innerHTML}
         6 - ${elements[6].innerHTML}
     `)
-    if(elements[0].innerHTML === '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'){
+    if(elements[0].innerHTML.includes('green')){
         alert('ooooooooooo')
     }
     else if(elements[0].innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'
@@ -41,9 +41,10 @@ function verificaVitoria(){
       && elements[2].innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'){
         alert('vitoria')
     }
-    else if(elements[0].innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'
-     && elements[3].innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'
-      && elements[6].innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'){
+    else if(elements[0].innerHTML.includes('green') 
+        && elements[3].innerHTML.includes('green')
+        && elements[6].innerHTML.includes('green')){
+
         alert('vitoria')
     }
     else if(elements[0].innerHTML == '<a-circle color="green" radius="0.1" position="0 0 0.6"></a-circle>'
