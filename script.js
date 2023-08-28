@@ -33,8 +33,12 @@ function verificaVitoria(){
         &&  elements[3].innerHTML.includes('green')
         &&  elements[6].innerHTML.includes('green')){
 
-        alert('Vitória para o verde')
-        windows.location.reload()
+            alert('Vitória para o verde')
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+    
 
     }
 
@@ -42,8 +46,12 @@ function verificaVitoria(){
         &&  elements[1].innerHTML.includes('green')
         &&  elements[2].innerHTML.includes('green')){
 
-        alert('Vitória para o verde')
-        windows.location.reload()
+            alert('Vitória para o verde')
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+    
 
     }
 
@@ -63,8 +71,12 @@ function verificaVitoria(){
         &&  elements[5].innerHTML.includes('green')
         &&  elements[8].innerHTML.includes('green')){
 
-        alert('Vitória para o verde')
-        windows.location.reload()
+            alert('Vitória para o verde')
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+    
 
     }
 
@@ -72,8 +84,12 @@ function verificaVitoria(){
         &&  elements[4].innerHTML.includes('green')
         &&  elements[6].innerHTML.includes('green')){
 
-        alert('Vitória para o verde')
-        windows.location.reload()
+            alert('Vitória para o verde')
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+    
 
     }
 
@@ -81,17 +97,25 @@ function verificaVitoria(){
         &&  elements[4].innerHTML.includes('green')
         &&  elements[5].innerHTML.includes('green')){
 
-        alert('Vitória para o verde')
-        windows.location.reload()
+            alert('Vitória para o verde')
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+    
 
     }
 
     if( elements[6].innerHTML.includes('green')
         &&  elements[7].innerHTML.includes('green')
         &&  elements[8].innerHTML.includes('green')){
+            
+            alert('Vitória para o verde')
 
-        alert('Vitória para o verde')
-        windows.location.reload()
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+    
 
     }
 
@@ -99,8 +123,12 @@ function verificaVitoria(){
         &&  elements[4].innerHTML.includes('green')
         &&  elements[7].innerHTML.includes('green')){
 
-        alert('Vitória para o verde')
-        windows.location.reload()
+            alert('Vitória para o verde')
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+    
 
     }
 
