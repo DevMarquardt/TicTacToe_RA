@@ -28,17 +28,64 @@ function verificaPecaTem(element){
 function verificaVitoria(){
 
     let naoEmpate = false
-    alert(`
-        0 - ${elements[0].innerHTML.includes('green')}
-        3 - ${elements[3].innerHTML.includes('green')}
-        6 - ${elements[6].innerHTML.includes('green')}
-    `)
+
     if( elements[0].innerHTML.includes('green')
         &&  elements[3].innerHTML.includes('green')
         &&  elements[6].innerHTML.includes('green')){
 
         alert('vitoria')
     }
+
+    if( elements[0].innerHTML.includes('green')
+        &&  elements[1].innerHTML.includes('green')
+        &&  elements[2].innerHTML.includes('green')){
+
+        alert('vitoria')
+    }
+
+    if( elements[0].innerHTML.includes('green')
+        &&  elements[4].innerHTML.includes('green')
+        &&  elements[8].innerHTML.includes('green')){
+
+        alert('vitoria')
+    }
+
+    if( elements[2].innerHTML.includes('green')
+        &&  elements[5].innerHTML.includes('green')
+        &&  elements[8].innerHTML.includes('green')){
+
+        alert('vitoria')
+    }
+
+    if( elements[2].innerHTML.includes('green')
+        &&  elements[4].innerHTML.includes('green')
+        &&  elements[6].innerHTML.includes('green')){
+
+        alert('vitoria')
+    }
+
+    if( elements[3].innerHTML.includes('green')
+        &&  elements[4].innerHTML.includes('green')
+        &&  elements[5].innerHTML.includes('green')){
+
+        alert('vitoria')
+    }
+
+    if( elements[6].innerHTML.includes('green')
+        &&  elements[7].innerHTML.includes('green')
+        &&  elements[8].innerHTML.includes('green')){
+
+        alert('vitoria')
+    }
+
+    if( elements[1].innerHTML.includes('green')
+        &&  elements[4].innerHTML.includes('green')
+        &&  elements[7].innerHTML.includes('green')){
+
+        alert('vitoria')
+    }
+
+
 
     elements.forEach(element => {
         if(element.innerHTML === ""){
