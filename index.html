@@ -1,34 +1,43 @@
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
-  </head>
-  <body>
-    <a-scene mindar-image="imageTargetSrc: /Neymar.mind.txt" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-assets>
-	<img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/card.png" />
-	<a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
-      </a-assets>
 
-      <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+</head>
 
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane color="gray" position="0 0 0" height="2" width="2" rotation="0 0 0">
-          <a-entity layout="type: grid; margin: 0.1; plane: xz; rows: 3; cols: 3">
-            <a-box position="-0.5 0.5 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
-            <a-box position="0 0.5 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
-            <a-box position="0.5 0.5 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
-            <a-box position="-0.5 0 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
-            <a-box position="0 0 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
-            <a-box position="0.5 0 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
-            <a-box position="-0.5 -0.5 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
-            <a-box position="0 -0.5 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
-            <a-box position="0.5 -0.5 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
-          </a-entity>
-        </a-plane>
-      </a-entity>
-    </a-scene>
-  </body>
-  <script src="./script.js"></script>
+<body>
+  <a-scene mindar-image="imageTargetSrc: /Neymar.mind.txt, /targets.mind.txt" color-space="sRGB"
+    renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false">
+    <a-assets>
+      <img id="card"
+        src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/card.png" />
+      <a-asset-item id="avatarModel"
+        src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/softmind/scene.gltf">
+      </a-asset-item>
+    </a-assets>
+
+    <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;"
+      raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
+
+    <a-entity mindar-image-target="targetIndex: 0">
+      <a-plane color="gray" position="0 0 0" height="2" width="2" rotation="0 0 0">
+        <a-entity layout="type: grid; margin: 0.1; plane: xz; rows: 3; cols: 3">
+          <a-box position="-0.5 0.5 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
+          <a-box position="0 0.5 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
+          <a-box position="0.5 0.5 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
+          <a-box position="-0.5 0 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
+          <a-box position="0 0 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
+          <a-box position="0.5 0 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
+          <a-box position="-0.5 -0.5 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
+          <a-box position="0 -0.5 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
+          <a-box position="0.5 -0.5 -0.4" color="black" width="0.4" height="0.4" class="clickable  quadrado"></a-box>
+        </a-entity>
+      </a-plane>
+    </a-entity>
+  </a-scene>
+</body>
+<script src="./script.js"></script>
+
 </html>
